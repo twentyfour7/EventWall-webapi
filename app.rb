@@ -6,7 +6,6 @@ require 'kktix_api'
 # GroupAPI web service
 class KKEventAPI < Sinatra::Base
   extend Econfig::Shortcut
- #KktixEvent::Organization
   Econfig.env = settings.environment.to_s
   Econfig.root = settings.root
 
@@ -35,13 +34,14 @@ class KKEventAPI < Sinatra::Base
 
       content_type 'application/json'
       { 
-        org.events.each do |event|
-          title: org.title, 
-          published: org.published
+        event: org.events.each do |event|
+          title = { title: org.title }
+          published = { published: org.published }
+          # { title: title,  published: published }
         end
       }.to_json
     rescue
-      halt 404, "Events of KKTIX organization (id: #{oid}) feed"
+      halt 404, "Events of KKTIX organization (oid: #{oid}) not found"
     end
   end
 end
