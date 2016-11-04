@@ -35,8 +35,8 @@ class KKEventAPI < Sinatra::Base
       content_type 'application/json'
       {
         event: org.events.map do |event|
-          title = { title: event.title }
-          published = { published: event.published }
+          title = event.title
+          published = event.published
 
           { title: title, published: published }
         end
