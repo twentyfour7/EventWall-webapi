@@ -15,7 +15,6 @@ def app
   KKEventAPI
 end
 
-
 FIXTURES_FOLDER = 'spec/fixtures'
 CASSETTES_FOLDER = "#{FIXTURES_FOLDER}/cassettes"
 CASSETTE_FILE = 'kktix_api'
@@ -23,8 +22,7 @@ CASSETTE_FILE = 'kktix_api'
 
 TEST_ORG_ID = 'nthuion'
 
-
 VCR.configure do |c|
-    c.cassette_library_dir = CASSETTES_FOLDER
-    c.hook_into :webmock
+  c.cassette_library_dir = CASSETTES_FOLDER
+  c.hook_into :webmock
 end
