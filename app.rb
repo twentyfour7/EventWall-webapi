@@ -33,11 +33,12 @@ class KKEventAPI < Sinatra::Base
       org = KktixEvent::Organization.find(oid)
 
       content_type 'application/json'
-      { 
-        event: org.events.each do |event|
-          title = { title: org.title }
-          published = { published: org.published }
-          # { title: title,  published: published }
+      {
+        event: org.events.map do |event|
+          title = { title: event.title }
+          published = { published: event.published }
+
+          { title: title, published: published }
         end
       }.to_json
     rescue
