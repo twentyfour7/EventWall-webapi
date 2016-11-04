@@ -31,7 +31,7 @@ describe 'Organization routes' do
     end
   end
 
-  describe 'get events of a group' do
+  describe 'get events held by the organization' do
     it 'HAPPY: should find events' do
       get "api/v0.1/org/#{app.config.KKTIX_ORG_ID}/event"
 
