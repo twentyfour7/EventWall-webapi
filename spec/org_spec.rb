@@ -37,8 +37,7 @@ describe 'Organization routes' do
 
       last_response.status.must_equal 200
       last_response.content_type.must_equal 'application/json'
-      events = JSON.parse(last_response.body)
-      events.count.must_be :>=, 0
+      JSON.parse(last_response.body).wont_be_empty
     end
 
     it 'SAD: should report if the event cannot be found' do
