@@ -5,7 +5,7 @@ describe 'Organization routes' do
   SAD_KKTIX_ORG_ID = 'sadorg'
 
   before do
-    VCR.insert_cassette GROUPS_CASSETTE, record: :new_episodes
+    VCR.insert_cassette CASSETTE_FILE, record: :new_episodes
   end
 
   after do
@@ -37,9 +37,7 @@ describe 'Organization routes' do
 
       last_response.status.must_equal 200
       last_response.content_type.must_equal 'application/json'
-      event_data = JSON.parse(last_response.body)
-      event_data['title'].count.must_be :>=, 0
-      event_data['published'].count.must_be :>=, 0
+      event_data = JSON.parse(last_response.body).wont_be_empty
     end
 
     it 'SAD: should report if the event cannot be found' do
