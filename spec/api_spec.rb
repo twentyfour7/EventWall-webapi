@@ -8,7 +8,7 @@ describe 'API basics' do
 
   it 'should successfully find the root route' do
     get '/'
-    last_response.body.must_include 'Organization'
+    last_response.body.must_include 'KKTIXEventAPI'
     last_response.status.must_equal 200
   end
 end

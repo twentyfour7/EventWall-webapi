@@ -18,7 +18,6 @@ end
 FIXTURES_FOLDER = 'spec/fixtures'
 CASSETTES_FOLDER = "#{FIXTURES_FOLDER}/cassettes"
 CASSETTE_FILE = 'kktix_api'
-# GROUPS_CASSETTE = 'groups'
 
 TEST_ORG_ID = 'nthuion'
 

@@ -12,7 +12,7 @@ class KKEventAPI < Sinatra::Base
   API_VER = 'api/v0.1'
 
   get '/?' do
-    "The latest version of KKEventAPI: /#{API_VER}/"
+    "The latest version of KKTIXEventAPI: /#{API_VER}/"
   end
 
   get "/#{API_VER}/org/:kktix_oid/?" do
