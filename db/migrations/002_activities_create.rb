@@ -4,11 +4,11 @@ require 'sequel'
 Sequel.migration do
   change do
     create_table(:activities) do
-      primary_key :id
-      foreign_key :organization_id
+      # primary_key :org_id
+      foreign_key :org_id
 
-      String :api_id
       String :datetime
+      String :location
       String :description
       String :cover_img
       String :attachment
