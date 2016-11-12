@@ -3,6 +3,8 @@ require 'sinatra'
 require 'econfig'
 require 'kktix_api'
 
+require_relative 'config/environment.rb'
+
 # GroupAPI web service
 class KKEventAPI < Sinatra::Base
   extend Econfig::Shortcut

@@ -3,3 +3,5 @@
 spec/fixtures/
 
 config/app.yml
+
+db/*.*
