@@ -8,8 +8,11 @@ gem 'econfig'
 
 gem 'kktix_api'
 
+gem 'sequel'
+
 group :develop, :test do
   gem 'pry-byebug'
+  gem 'sqlite3'
 end
 
 group :test do
@@ -19,6 +22,11 @@ group :test do
   gem 'rake'
   gem 'vcr'
   gem 'webmock'
+end
+
+group :develop, :production do
+  gem 'tux'
+  gem 'hirb'
 end
 
 group :quality do
