@@ -7,7 +7,7 @@ require 'vcr'
 require 'webmock'
 require 'rack/test'
 
-require_relative '../app'
+require './init.rb'
 
 include Rack::Test::Methods
 
@@ -19,9 +19,11 @@ FIXTURES_FOLDER = 'spec/fixtures'
 CASSETTES_FOLDER = "#{FIXTURES_FOLDER}/cassettes"
 CASSETTE_FILE = 'kktix_api'
 
-TEST_ORG_ID = 'nthuion'
-
 VCR.configure do |c|
   c.cassette_library_dir = CASSETTES_FOLDER
   c.hook_into :webmock
 end
+
+HAPPY_KKTIX_ORG_ID = 'nthuion'
+SAD_KKTIX_ORG_ID = 'cowbieNTHU'
+SAD_EVENT_ID = 'http://so.sad.no.event'

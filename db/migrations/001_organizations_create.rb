@@ -4,10 +4,11 @@ require 'sequel'
 Sequel.migration do
   change do
     create_table(:organizations) do
-      primary_key :org_id
+      primary_key :id
 
+      String :org_id
       String :name
-      String :school
+      String :url
     end
   end
 end

@@ -3,16 +3,14 @@ GEM
   specs:
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
-    ast (2.3.0)
     bond (0.5.1)
-    byebug (9.0.6)
-    coderay (1.1.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     domain_name (0.5.20161021)
       unf (>= 0.0.5, < 1.0.0)
     econfig (2.0.0)
     erubis (2.7.0)
+    ffi (1.9.14)
     flay (2.8.1)
       erubis (~> 2.7.0)
       path_expander (~> 1.0)
@@ -36,21 +34,15 @@ GEM
     json (2.0.2)
     kktix_api (0.1.1)
       http (~> 2.0)
-    method_source (0.8.2)
+    listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     minitest (5.9.1)
     minitest-rg (5.2.0)
       minitest (~> 5.0)
-    parser (2.3.1.4)
-      ast (~> 2.2)
     path_expander (1.0.0)
-    powerpack (0.1.1)
-    pry (0.10.4)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    pry-byebug (3.4.0)
-      byebug (~> 9.0)
-      pry (~> 0.10)
+    pg (0.19.0)
     public_suffix (2.0.3)
     puma (3.6.0)
     rack (1.6.4)
@@ -58,8 +50,12 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    rainbow (2.1.0)
     rake (11.3.0)
+    rb-fsevent (0.9.8)
+    rb-inotify (0.9.7)
+      ffi (>= 0.5.0)
+    rerun (0.11.0)
+      listen (~> 3.0)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
@@ -68,13 +64,7 @@ GEM
       rack (>= 1.0)
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
-    rubocop (0.45.0)
-      parser (>= 2.3.1.1, < 3.0)
-      powerpack (~> 0.1)
-      rainbow (>= 1.99.1, < 3.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (~> 1.0, >= 1.0.1)
-    ruby-progressbar (1.8.1)
+    ruby_dep (1.5.0)
     ruby_parser (3.8.3)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
@@ -84,7 +74,6 @@ GEM
       rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
-    slop (3.6.0)
     sqlite3 (1.3.12)
     tilt (2.0.5)
     tux (0.3.0)
@@ -95,7 +84,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    unicode-display_width (1.1.1)
     vcr (3.0.3)
     webmock (2.1.0)
       addressable (>= 2.3.6)
@@ -114,11 +102,11 @@ DEPENDENCIES
   kktix_api
   minitest
   minitest-rg
-  pry-byebug
+  pg
   puma
   rack-test
   rake
-  rubocop
+  rerun
   sequel
   sinatra
   sqlite3

@@ -10,9 +10,14 @@ gem 'kktix_api'
 
 gem 'sequel'
 
-group :develop, :test do
-  gem 'pry-byebug'
+group :development, :test do
   gem 'sqlite3'
+end
+
+group :development do
+  gem 'rerun'
+  gem 'flog'
+  gem 'flay'
 end
 
 group :test do
@@ -29,8 +34,6 @@ group :develop, :production do
   gem 'hirb'
 end
 
-group :quality do
-  gem 'flog'
-  gem 'flay'
-  gem 'rubocop'
+group :production do
+  gem 'pg'
 end
