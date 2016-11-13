@@ -7,12 +7,13 @@ Sequel.migration do
       primary_key :id
       foreign_key :org_id
 
-      String :url
-      String :published
       String :title
-      String :summary
-      String :content
-      String :author
+      String :description
+      String :datetime
+      String :location
+      String :url
+      String :cover_img_url
+      String :attachment_url
     end
   end
 end
