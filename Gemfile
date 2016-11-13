@@ -33,3 +33,7 @@ group :develop, :production do
   gem 'tux'
   gem 'hirb'
 end
+
+group :production do
+  gem 'pg'
+end
