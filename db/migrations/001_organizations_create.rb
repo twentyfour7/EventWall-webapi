@@ -7,7 +7,7 @@ Sequel.migration do
       primary_key :org_id
 
       String :name
-      String :school
+      String :uri
     end
   end
 end
