@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
+ruby '2.3.1'
 
 gem 'sinatra'
 gem 'puma'
 gem 'json'
 gem 'econfig'
+gem 'rake'
 
 gem 'kktix_api'
 
@@ -29,7 +31,7 @@ group :test do
   gem 'webmock'
 end
 
-group :develop, :production do
+group :development, :production do
   gem 'tux'
   gem 'hirb'
 end

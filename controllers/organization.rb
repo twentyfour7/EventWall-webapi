@@ -41,7 +41,7 @@ class KKEventAPI < Sinatra::Base
           description:    event.content,
           # datetime:       event&.datetime,
           # location:       event&.location,
-          url:            event&.url,
+          url:            event&.url
           # cover_img_url:  event&.cover_img_url,
           # attachment_url: event&.attachment_url
         )
