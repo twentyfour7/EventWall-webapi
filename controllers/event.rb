@@ -4,32 +4,25 @@
 class KKEventAPI < Sinatra::Base
   get "/#{API_VER}/org/:id/event/?" do
     oid = params[:id]
+    # search_terms = params[:search] # for filtering function, incompleten now
     begin
       org = Organization.find(org_id: oid)
       halt 404, "KKTIX organization (id: #{oid}) not found" unless org
 
-      events = {
-        events: Event.where(org_id: org.id).map do |event|
-          e = { id: event.id, org_id: org.id }
-          e[:title] = event.title if event.title
-          e[:description] = event.description if event.description
-          e[:datetime] = event.datetime if event.datetime
-          e[:location] = event.location if event.location
-          e[:cover_img_url] = event.cover_img_url if event.cover_img_url
-          e[:attachment_url] = event.attachment_url if event.attachment_url
+      results = OrganizationEventsQuery.call(org)
 
-          { event: e }
-        end
-      }
+      # results = EventsSearchResults.new(
+      #   search_terms, oid, relevant_events
+      # )
 
       content_type 'application/json'
-      events.to_json
+      EventsRepresenter.new(results).to_json
     rescue
       halt 500, "Events of KKTIX organization (oid: #{oid}) cannot be processed"
     end
   end
 
-  # Body args (JSON) e.g.: {"id": "nthuion}
+  # Body args (JSON) e.g.: {"id": "nthuion"}
   put "/#{API_VER}/event/:id" do
     begin
       event_id = params[:id]
@@ -52,8 +45,8 @@ class KKEventAPI < Sinatra::Base
       end
       event.save
 
-      content_type 'text/plain'
-      body ''
+      content_type 'application/json'
+      EventRepresenter.new(event).to_json
     rescue
       content_type 'text/plain'
       halt 500, "Cannot update event (url: #{event_id})"

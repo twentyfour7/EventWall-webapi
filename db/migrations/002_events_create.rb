@@ -14,6 +14,7 @@ Sequel.migration do
       String :url
       String :cover_img_url
       String :attachment_url
+      String :event_type
     end
   end
 end
