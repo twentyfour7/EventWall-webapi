@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Loads data from Facebook group to database
-class SearchOrganization
+class FindOrganization
   extend Dry::Monads::Either::Mixin
 
   def self.call(params)

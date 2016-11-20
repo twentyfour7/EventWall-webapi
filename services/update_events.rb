@@ -46,7 +46,7 @@ class UpdateEventFromKKTIX
       location:        updated_data.location,
       url:             updated_data&.url,
       cover_img_url:   updated_data&.cover_img_url,
-      attachment_url:  updated_data&.attachment_urlm
+      attachment_url:  updated_data&.attachment_url,
       event_type:      updated_data.event_type
     )
     event.save

@@ -79,7 +79,7 @@ class LoadOrgFromKKTIX
       location:        event.location,
       url:             event&.url,
       cover_img_url:   event&.cover_img_url,
-      attachment_url:  event&.attachment_urlm
+      attachment_url:  event&.attachment_url,
       event_type:      event.event_type
     )
   end
