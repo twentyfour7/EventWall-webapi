@@ -8,7 +8,8 @@ Sequel.migration do
       foreign_key :org_id
 
       String :title
-      String :description
+      String :summary
+      String :published
       String :datetime
       String :location
       String :url

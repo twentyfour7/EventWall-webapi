@@ -5,7 +5,7 @@ require_relative 'event'
 class EventsSearchResultsRepresenter < Roar::Decorator
   include Roar::JSON
 
-  property :search_terms_used
+  # property :search_terms_used
   property :oid
   collection :events, extend: EventRepresenter, class: Event
 end

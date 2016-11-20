@@ -6,19 +6,19 @@ class SearchEvents
   extend Dry::Container::Mixin
 
   register :validate_params, lambda { |params|
-    search = EventsSearchCriteria.new(params)
-    org = Organization.find(id: search.org_id)
+    # search = EventsSearchCriteria.new(params)
+    org = Organization.find(org_id: params["id"])
     if org
-      Right(org: org, search: search)
+      Right(org)
     else
       Left(Error.new(:not_found, 'Organization not found'))
     end
   }
 
-  register :search_events, lambda { |input|
-    events = OrganizationEventsQuery.call(input[:org], input[:search].terms)
+  register :search_events, lambda { |org|
+    events = OrganizationEventsQuery.call(org)
     results = EventsSearchResults.new(
-      input[:search].terms, input[:search].org_id, events
+      org.org_id, events
     )
     Right(results)
   }

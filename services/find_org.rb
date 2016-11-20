@@ -5,10 +5,10 @@ class FindOrganization
   extend Dry::Monads::Either::Mixin
 
   def self.call(params)
-    if (org = Organization.find(id: params[:id])).nil?
+    if (org = Organization.find(org_id: params[:id])).nil?
       Left(Error.new(:not_found, 'Organization not found'))
     else
-      Right(group)
+      Right(org)
     end
   end
 end

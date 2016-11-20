@@ -4,7 +4,6 @@
 class KKEventAPI < Sinatra::Base
   get "/#{API_VER}/org/:id/?" do
     result = FindOrganization.call(params)
-
     if result.success?
       OrganizationRepresenter.new(result.value).to_json
     else
