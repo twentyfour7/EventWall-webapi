@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # frozen_property_literal: true
 
 # Represents overall organization information for JSON API output

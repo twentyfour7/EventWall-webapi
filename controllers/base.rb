@@ -28,5 +28,4 @@ class KKEventAPI < Sinatra::Base
       message: "EventAPI latest version endpoints are at: /#{API_VER}/"
     }.to_json
   end
-
 end

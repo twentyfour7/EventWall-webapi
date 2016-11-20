@@ -7,7 +7,7 @@ class SearchEvents
 
   register :validate_params, lambda { |params|
     # search = EventsSearchCriteria.new(params)
-    org = Organization.find(org_id: params["id"])
+    org = Organization.find(org_id: params['id'])
     if org
       Right(org)
     else

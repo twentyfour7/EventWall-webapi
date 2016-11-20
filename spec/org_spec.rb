@@ -15,8 +15,8 @@ describe 'Organization routes' do
       DB[:organizations].delete
       DB[:events].delete
       post 'api/v0.1/org',
-            HAPPY_KKTIX_ORG_ID,
-            'CONTENT_TYPE' => 'application/json'
+           HAPPY_KKTIX_ORG_ID,
+           'CONTENT_TYPE' => 'application/json'
     end
     it '(HAPPY) should find an organization by giving a correct ID' do
       get "api/v0.1/org/#{Organization.first.org_id}"
@@ -42,8 +42,8 @@ describe 'Organization routes' do
 
     it '(HAPPY) should load and save a new organization by its ID' do
       post 'api/v0.1/org',
-            HAPPY_KKTIX_ORG_ID,
-            'CONTENT_TYPE' => 'application/json'
+           HAPPY_KKTIX_ORG_ID,
+           'CONTENT_TYPE' => 'application/json'
 
       last_response.status.must_equal 200
       body = JSON.parse(last_response.body)
@@ -57,16 +57,16 @@ describe 'Organization routes' do
 
     it '(BAD) should report error if given invalid ID' do
       post 'api/v0.1/org',
-            SAD_KKTIX_ORG_ID,
-            'CONTENT_TYPE' => 'application/json'
+           SAD_KKTIX_ORG_ID,
+           'CONTENT_TYPE' => 'application/json'
       last_response.status.must_equal 422
     end
 
     it 'should report error if organization already exists' do
       2.times do
         post 'api/v0.1/org',
-            HAPPY_KKTIX_ORG_ID,
-            'CONTENT_TYPE' => 'application/json'
+             HAPPY_KKTIX_ORG_ID,
+             'CONTENT_TYPE' => 'application/json'
       end
       last_response.status.must_equal 422
     end

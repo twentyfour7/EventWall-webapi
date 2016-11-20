@@ -7,7 +7,7 @@ class LoadOrgFromKKTIX
 
   register :validate_kktix_org_id, lambda { |kktix_org_id|
     kktix_org_url = 'http://' + kktix_org_id + '.kktix.cc'
-    if (HTTP.get(kktix_org_url).code.to_s == '404')
+    if HTTP.get(kktix_org_url).code.to_s == '404'
       Left(Error.new(:cannot_process, 'URL not recognized as KKTIX organization'))
     else
       Right(kktix_org_id)
@@ -40,7 +40,7 @@ class LoadOrgFromKKTIX
 
   private_class_method
 
-  def self.write_org_event(org, event, oid)
+  def self.write_org_event(_org, event, oid)
     content = event.content.each_line.to_a
     Event.create(
       org_id:          oid,

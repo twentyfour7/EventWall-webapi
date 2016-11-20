@@ -2,7 +2,6 @@
 
 # Input for SearchEvents
 class EventsSearchCriteria
-
   attr_accessor :org_id, :terms
 
   def initialize(params)

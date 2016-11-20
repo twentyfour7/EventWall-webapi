@@ -15,8 +15,8 @@ describe 'Organization routes' do
       DB[:organizations].delete
       DB[:events].delete
       post 'api/v0.1/org',
-            HAPPY_KKTIX_ORG_ID,
-            'CONTENT_TYPE' => 'application/json'
+           HAPPY_KKTIX_ORG_ID,
+           'CONTENT_TYPE' => 'application/json'
     end
 
     it '(HAPPY) should find events' do

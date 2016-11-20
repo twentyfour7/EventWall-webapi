@@ -14,7 +14,6 @@ class KKEventAPI < Sinatra::Base
 
   # Body args (JSON) e.g.: {"id": "nthuion"}
   put "/#{API_VER}/event/:id" do
-
     result = UpdateEventFromKKTIX.call(params)
 
     if result.success?
