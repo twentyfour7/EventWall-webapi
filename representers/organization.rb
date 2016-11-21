@@ -6,7 +6,7 @@ class OrganizationRepresenter < Roar::Decorator
   include Roar::JSON
 
   property :id
-  property :org_id
+  property :slug
   property :name
-  property :url
+  property :uri
 end

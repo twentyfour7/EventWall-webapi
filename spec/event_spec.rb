@@ -20,7 +20,7 @@ describe 'Organization routes' do
     end
 
     it '(HAPPY) should find events' do
-      get "api/v0.1/org/#{Organization.first.org_id}/event"
+      get "api/v0.1/org/#{Organization.first.slug}/event"
 
       last_response.status.must_equal 200
       last_response.content_type.must_equal 'application/json'

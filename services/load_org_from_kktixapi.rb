@@ -5,27 +5,27 @@ class LoadOrgFromKKTIX
   extend Dry::Monads::Either::Mixin
   extend Dry::Container::Mixin
 
-  register :validate_kktix_org_id, lambda { |kktix_org_id|
-    kktix_org_url = 'http://' + kktix_org_id + '.kktix.cc'
+  register :validate_kktix_org_id, lambda { |kktix_org_slug|
+    kktix_org_url = 'http://' + kktix_org_slug + '.kktix.cc'
     if HTTP.get(kktix_org_url).code.to_s == '404'
       Left(Error.new(:cannot_process, 'URL not recognized as KKTIX organization'))
     else
-      Right(kktix_org_id)
+      Right(kktix_org_slug)
     end
   }
 
-  register :retrieve_org_and_event, lambda { |kktix_org_id|
-    if Organization.find(org_id: kktix_org_id)
+  register :retrieve_org_and_event, lambda { |kktix_org_slug|
+    if Organization.find(slug: kktix_org_slug)
       Left(Error.new(:cannot_process, 'Organization already exists'))
     else
-      Right(KktixEvent::Organization.find(kktix_org_id))
+      Right(KktixEvent::Organization.find(kktix_org_slug))
     end
   }
 
   register :create_org_and_event, lambda { |kktix_org|
-    org = Organization.create(org_id: kktix_org.oid, name: kktix_org.name, url: kktix_org.uri)
+    org = Organization.create(slug: kktix_org.oid, name: kktix_org.name, uri: kktix_org.uri)
     kktix_org.events.each do |event|
-      write_org_event(org, event, kktix_org.oid)
+      write_org_event(event, org.id)
     end
     Right(org)
   }
@@ -40,10 +40,10 @@ class LoadOrgFromKKTIX
 
   private_class_method
 
-  def self.write_org_event(_org, event, oid)
+  def self.write_org_event(event, oid)
     content = event.content.each_line.to_a
     Event.create(
-      org_id:          oid,
+      organization_id: oid,
       title:           event.title,
       summary:         event.summary,
       published:       event.published,

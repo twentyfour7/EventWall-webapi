@@ -6,6 +6,6 @@ class EventsSearchResultsRepresenter < Roar::Decorator
   include Roar::JSON
 
   # property :search_terms_used
-  property :oid
+  property :slug
   collection :events, extend: EventRepresenter, class: Event
 end

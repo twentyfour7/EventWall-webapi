@@ -5,7 +5,7 @@ Sequel.migration do
   change do
     create_table(:events) do
       primary_key :id
-      foreign_key :org_id
+      foreign_key :organization_id
 
       String :title
       String :summary

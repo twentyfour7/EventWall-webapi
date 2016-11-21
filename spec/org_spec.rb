@@ -19,12 +19,12 @@ describe 'Organization routes' do
            'CONTENT_TYPE' => 'application/json'
     end
     it '(HAPPY) should find an organization by giving a correct ID' do
-      get "api/v0.1/org/#{Organization.first.org_id}"
+      get "api/v0.1/org/#{Organization.first.slug}"
       last_response.status.must_equal 200
       last_response.content_type.must_equal 'application/json'
       org_data = JSON.parse(last_response.body)
       org_data['name'].length.must_be :>, 0
-      org_data['url'].length.must_be :>, 0
+      org_data['uri'].length.must_be :>, 0
     end
 
     it '(SAD) should report if an organization is not found' do
@@ -49,7 +49,7 @@ describe 'Organization routes' do
       body = JSON.parse(last_response.body)
       body.must_include 'id'
       body.must_include 'name'
-      body.must_include 'url'
+      body.must_include 'uri'
 
       Organization.count.must_equal 1
       Event.count.must_be :>=, 1

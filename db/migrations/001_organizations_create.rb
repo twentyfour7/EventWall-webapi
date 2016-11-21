@@ -6,9 +6,9 @@ Sequel.migration do
     create_table(:organizations) do
       primary_key :id
 
-      String :org_id
+      String :slug
       String :name
-      String :url
+      String :uri
     end
   end
 end

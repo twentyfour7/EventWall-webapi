@@ -6,9 +6,9 @@ class EventRepresenter < Roar::Decorator
   include Roar::JSON
 
   property :id
-  property :org_id
+  property :organization_id
   property :title
-  property :description
+  property :summary
   property :datetime
   property :location
   property :url
