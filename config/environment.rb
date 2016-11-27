@@ -8,6 +8,7 @@ end
 
 configure :test do
   ENV['DATABASE_URL'] = 'sqlite://db/test.db'
+  ENV['KKTIX_ORG_ID'] = 'nthuion'
 end
 
 configure :development, :production do

@@ -24,6 +24,10 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
+HAPPY_KKTIX_ORG_URL = 'http://nthuion.kktix.cc'
+SAD_KKTIX_ORG_URL = 'http://cowbieNTHU.kktix.cc'
+BAD_KKTIX_ORG_URL = 'htt://kktix.bad.url'
+
 HAPPY_KKTIX_ORG_ID = 'nthuion'
 SAD_KKTIX_ORG_ID = 'cowbieNTHU'
 SAD_EVENT_ID = 'http://so.sad.no.event'

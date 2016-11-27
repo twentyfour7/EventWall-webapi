@@ -9,8 +9,12 @@ gem 'econfig'
 gem 'rake'
 
 gem 'kktix_api'
-
 gem 'sequel'
+gem 'roar'
+gem 'multi_json'
+gem 'dry-monads'
+gem 'dry-container'
+gem 'dry-transaction'
 
 group :development, :test do
   gem 'sqlite3'
@@ -20,13 +24,13 @@ group :development do
   gem 'rerun'
   gem 'flog'
   gem 'flay'
+  gem 'rubocop'
 end
 
 group :test do
   gem 'minitest'
   gem 'minitest-rg'
   gem 'rack-test'
-  gem 'rake'
   gem 'vcr'
   gem 'webmock'
 end
