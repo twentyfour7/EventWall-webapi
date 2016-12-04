@@ -9,20 +9,14 @@ class EventsQuery
   private_class_method
 
   def self.search_events(queries)
-    return Event.where(keyword_clause(queries[:search].split)).all unless queries[:search].nil?
-    Event.where(where_clause(queries)).all
+    # return Event.where(keyword_clause(queries[:search].split)).all unless organization_id.nil?
+    return Event.where(where_clause(queries.blur_terms)) if queries.exact_terms.empty?
+    Event.where(queries.exact_terms).all
   end
 
   def self.where_clause(search_terms)
     search_terms.map do |key, val|
-      Sequel.ilike(key, val) if key.to_s.include? 'id'
       Sequel.ilike(key, "%#{val}%")
-    end.inject(&:|)
-  end
-
-  def self.keyword_clause(search_terms)
-    search_terms.map do |word|
-      Sequel.ilike(:title, "%#{word}%")
     end.inject(&:|)
   end
 end

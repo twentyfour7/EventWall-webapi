@@ -15,7 +15,7 @@ class SearchEvents
   }
 
   register :search_events, lambda { |input|
-    search_terms = input[:query].terms
+    search_terms = input[:query]
     events = EventsQuery.call(search_terms)
     results = EventsSearchResults.new(events, search_terms)
     Right(results)
