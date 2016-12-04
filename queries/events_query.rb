@@ -16,6 +16,7 @@ class EventsQuery
 
   def self.where_clause(search_terms)
     search_terms.map do |key, val|
+      return val.split.map { |word| Sequel.ilike(:title, "%#{word}%") }.inject(&:|) if key.equal? :search
       Sequel.ilike(key, "%#{val}%")
     end.inject(&:|)
   end
