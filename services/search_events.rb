@@ -6,9 +6,7 @@ class SearchEvents
   extend Dry::Container::Mixin
 
   register :validate_params, lambda { |params|
-    puts params
     query = EventsSearchCriteria.new(params)
-    puts query.terms
     if query
       Right(query: query)
     else

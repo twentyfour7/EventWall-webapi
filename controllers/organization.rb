@@ -7,7 +7,6 @@ class KKEventAPI < Sinatra::Base
     result = FindOrganization.call(params[:slug])
 
     if result.success?
-      puts result.value
       OrganizationRepresenter.new(result.value).to_json
     else
       ErrorRepresenter.new(result.value).to_status_response
