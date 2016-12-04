@@ -2,10 +2,9 @@
 
 # Input for SearchEvents
 class EventsSearchCriteria
-  attr_accessor :org_id, :terms
+  attr_accessor :terms
 
   def initialize(params)
-    @org_id = params[:org_id]
-    @terms = params[:search]
+    @terms = Hash[params.map { |key, val| [key.to_sym, val] }]
   end
 end

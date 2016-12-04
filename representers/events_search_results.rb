@@ -1,11 +1,7 @@
 # frozen_string_literal: true
-require_relative 'event'
+require_relative 'events'
 
 # Represents overall organization information for JSON API output
-class EventsSearchResultsRepresenter < Roar::Decorator
-  include Roar::JSON
-
-  # property :search_terms_used
-  property :slug
-  collection :events, extend: EventRepresenter, class: Event
+class EventsSearchResultsRepresenter < EventsRepresenter
+  property :search_terms
 end

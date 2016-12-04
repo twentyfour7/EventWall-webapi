@@ -7,20 +7,17 @@ class SearchEvents
 
   register :validate_params, lambda { |params|
     query = EventsSearchCriteria.new(params)
-    org = Organization.find(slug: params['org_slug'])
-    if org
-      puts query.terms
-      Right(org: org, query: query)
+    if query
+      Right(query: query)
     else
-      Left(Error.new(:not_found, 'Organization not found'))
+      Left(Error.new(:not_found, 'Search terms error'))
     end
   }
 
   register :search_events, lambda { |input|
-    events = OrganizationEventsQuery.call(input[:org], input[:query].terms)
-    results = EventsSearchResults.new(
-      input[:org].slug, events
-    )
+    search_terms = input[:query].terms
+    events = EventsQuery.call(search_terms)
+    results = EventsSearchResults.new(events, search_terms)
     Right(results)
   }
 

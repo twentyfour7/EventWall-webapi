@@ -6,9 +6,9 @@ class LoadOrgFromKKTIX
   extend Dry::Container::Mixin
 
   register :validate_kktix_org_id, lambda { |kktix_org_slug|
-    kktix_org_url = 'http://' + kktix_org_slug + '.kktix.cc'
-    if HTTP.get(kktix_org_url).code.to_s == '404'
-      Left(Error.new(:cannot_process, 'URL not recognized as KKTIX organization'))
+    kktix_org_url = "http://#{kktix_org_slug}.kktix.cc"
+    if HTTP.get(kktix_org_url).code == 404
+      Left(Error.new(:not_found, 'URL not recognized as KKTIX organization'))
     else
       Right(kktix_org_slug)
     end
@@ -30,12 +30,12 @@ class LoadOrgFromKKTIX
     Right(org)
   }
 
-  def self.call(params)
+  def self.call(slug)
     Dry.Transaction(container: self) do
       step :validate_kktix_org_id
       step :retrieve_org_and_event
       step :create_org_and_event
-    end.call(params)
+    end.call(slug)
   end
 
   private_class_method
