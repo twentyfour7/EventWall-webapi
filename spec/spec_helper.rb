@@ -29,5 +29,5 @@ SAD_KKTIX_ORG_URL = 'http://cowbieNTHU.kktix.cc'
 BAD_KKTIX_ORG_URL = 'htt://kktix.bad.url'
 
 HAPPY_KKTIX_ORG_ID = 'nthuion'
-SAD_KKTIX_ORG_ID = 'cowbieNTHU'
+SAD_KKTIX_ORG_ID = 'cowbeiNTHU'
 SAD_EVENT_ID = 'http://so.sad.no.event'

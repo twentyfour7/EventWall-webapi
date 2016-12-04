@@ -59,7 +59,7 @@ describe 'Organization routes' do
       post 'api/v0.1/org',
            SAD_KKTIX_ORG_ID,
            'CONTENT_TYPE' => 'application/json'
-      last_response.status.must_equal 422
+      last_response.status.must_equal 404
     end
 
     it 'should report error if organization already exists' do
