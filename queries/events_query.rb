@@ -15,6 +15,7 @@ class EventsQuery
 
   def self.where_clause(search_terms)
     search_terms.map do |key, val|
+      Sequel.ilike(key, val) if key.to_s.include? 'id'
       Sequel.ilike(key, "%#{val}%")
     end.inject(&:|)
   end
