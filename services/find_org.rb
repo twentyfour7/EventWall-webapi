@@ -4,9 +4,9 @@
 class FindOrganization
   extend Dry::Monads::Either::Mixin
 
-  def self.call(params)
-    if (org = Organization.find(slug: params[:slug])).nil?
-      Left(Error.new(:not_found, 'Organization not found'))
+  def self.call(slug)
+    if (org = Organization.find(slug: slug)).nil?
+      LoadOrgFromKKTIX.call(slug)
     else
       Right(org)
     end

@@ -2,7 +2,7 @@
 
 # Event route
 class KKEventAPI < Sinatra::Base
-  get "/#{API_VER}/org/:org_slug/event/?" do
+  get "/#{API_VER}/event/?" do
     results = SearchEvents.call(params)
 
     if results.success?
