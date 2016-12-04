@@ -17,8 +17,12 @@ class SearchEvents
   register :search_events, lambda { |input|
     search_terms = input[:query]
     events = EventsQuery.call(search_terms)
-    results = EventsSearchResults.new(events, search_terms)
-    Right(results)
+    if events.empty?
+      Left(Error.new(:not_found, 'Nothing found!'))
+    else
+      results = EventsSearchResults.new(events, search_terms)
+      Right(results)
+    end
   }
 
   def self.call(params)
