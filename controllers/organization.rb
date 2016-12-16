@@ -35,4 +35,13 @@ class KKEventAPI < Sinatra::Base
       ErrorRepresenter.new(results.value).to_status_response
     end
   end
+
+  get "/#{API_VER}/org/detail/:org_id" do
+    result = GetOrgDetails.call(params)
+    if result.success?
+      OrganizationRepresenter.new(result.value).to_json
+    else
+      ErrorRepresenter.new(result.value).to_status_response
+    end
+  end
 end

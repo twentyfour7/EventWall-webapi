@@ -22,4 +22,13 @@ class KKEventAPI < Sinatra::Base
       ErrorRepresenter.new(result.value).to_status_response
     end
   end
+
+  get "/#{API_VER}/event/detail/:event_id" do
+    result = GetEventDetails.call(params)
+    if result.success?
+      EventRepresenter.new(result.value).to_json
+    else
+      ErrorRepresenter.new(result.value).to_status_response
+    end
+  end
 end
