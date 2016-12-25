@@ -55,6 +55,7 @@ namespace :db do
 
   desc 'Reset migrations (full rollback and migration)'
   task reset: [:_setup] do
+    puts "Rolling back #{ENV['RACK_ENV'] || 'development'} database"
     Sequel::Migrator.run(DB, 'db/migrations', target: 0)
     Sequel::Migrator.run(DB, 'db/migrations')
   end
