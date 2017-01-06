@@ -24,6 +24,16 @@ class KKEventAPI < Sinatra::Base
     end
   end
 
+  get "/#{API_VER}/nthuorg/:nthuorg" do
+    result = LoadEventFromNTHU.call(params[:nthuorg])
+    puts result
+    if result.success?
+      OrganizationRepresenter.new(result.value).to_json
+    else
+      ErrorRepresenter.new(result.value).to_status_response
+    end
+  end
+
   # get events of an organization
   get "/#{API_VER}/org/:org_slug/event/?" do
     results = LoadOrgEvents.call(params[:org_slug])

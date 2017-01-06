@@ -9,6 +9,7 @@ gem 'econfig'
 gem 'rake'
 
 gem 'kktix_api'
+gem 'nthuevent'
 gem 'sequel'
 gem 'roar'
 gem 'multi_json'

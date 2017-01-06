@@ -54,10 +54,15 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
+    mini_portile2 (2.1.0)
     minitest (5.9.1)
     minitest-rg (5.2.0)
       minitest (~> 5.0)
     multi_json (1.12.1)
+    nokogiri (1.7.0.1)
+      mini_portile2 (~> 2.1.0)
+    nthuevent (0.1.1)
+      nokogiri (~> 1.6)
     parser (2.3.1.4)
       ast (~> 2.2)
     path_expander (1.0.0)
@@ -141,6 +146,7 @@ DEPENDENCIES
   minitest
   minitest-rg
   multi_json
+  nthuevent
   pg
   puma
   rack-test
@@ -159,4 +165,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.6
+   1.13.7

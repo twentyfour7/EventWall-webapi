@@ -25,7 +25,7 @@ class LoadOrgFromKKTIX
   register :create_org_and_event, lambda { |kktix_org|
     org = Organization.create(slug: kktix_org.oid, name: kktix_org.name, uri: kktix_org.uri)
     kktix_org.events.each do |event|
-      event_type = AssignEventType.call(kktix_org.name, event)
+      event_type = AssignEventType.call(kktix_org.name, event.title, event.summary)
       write_org_event(event, org.id, event_type)
     end
     Right(org)
