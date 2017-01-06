@@ -43,6 +43,7 @@ class LoadOrgFromKKTIX
 
   def self.write_org_event(event, oid, event_type)
     content = event.content.each_line.to_a
+    puts event_type
     Event.create(
       organization_id: oid,
       title:           event.title,
