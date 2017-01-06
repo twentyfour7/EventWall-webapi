@@ -25,7 +25,8 @@ class LoadOrgFromKKTIX
   register :create_org_and_event, lambda { |kktix_org|
     org = Organization.create(slug: kktix_org.oid, name: kktix_org.name, uri: kktix_org.uri)
     kktix_org.events.each do |event|
-      write_org_event(event, org.id)
+      event_type = AssignEventType.call(kktix_org.name, event)
+      write_org_event(event, org.id, event_type)
     end
     Right(org)
   }
@@ -40,8 +41,9 @@ class LoadOrgFromKKTIX
 
   private_class_method
 
-  def self.write_org_event(event, oid)
+  def self.write_org_event(event, oid, event_type)
     content = event.content.each_line.to_a
+    puts event_type
     Event.create(
       organization_id: oid,
       title:           event.title,
@@ -52,7 +54,7 @@ class LoadOrgFromKKTIX
       url:             event.url,
       # cover_img_url:   event&.cover_img_url,
       # attachment_url:  event&.attachment_url,
-      # event_type:      event&.event_type
+      event_type:      event_type
     )
   end
 end
