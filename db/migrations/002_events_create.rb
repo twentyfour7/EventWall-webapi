@@ -12,7 +12,7 @@ Sequel.migration do
       String :published
       String :datetime
       String :location
-      String :url
+      String :url, :unique=>true
       String :cover_img_url
       String :attachment_url
       String :event_type
