@@ -6,3 +6,5 @@ config/app.yml
 
 db/*.*
 .bundle/
+
+Gemfile.lock

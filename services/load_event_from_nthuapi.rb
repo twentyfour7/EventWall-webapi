@@ -54,7 +54,7 @@ class LoadEventFromNTHU
       title:           event.title,
       summary:         event.content,
       published:       event.date,
-      # datetime:        content[0].sub('時間：', ''),
+      datetime:        event.date,
       # location:        content[1].sub('地點：', ''),
       url:             event.url,
       # cover_img_url:   event&.cover_img_url,
