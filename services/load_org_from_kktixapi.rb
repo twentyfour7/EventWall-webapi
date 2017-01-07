@@ -23,7 +23,7 @@ class LoadOrgFromKKTIX
   }
 
   register :create_org_and_event, lambda { |kktix_org|
-    org = Organization.create(slug: kktix_org.oid, name: kktix_org.name, uri: kktix_org.uri)
+    org = Organization.create(slug: kktix_org.slug, name: kktix_org.name, uri: kktix_org.uri)
     kktix_org.events.each do |event|
       event_type = AssignEventType.call(kktix_org.name, event.title, event.summary)
       write_org_event(event, org.id, event_type)
@@ -43,12 +43,10 @@ class LoadOrgFromKKTIX
 
   def self.write_org_event(event, oid, event_type)
     content = event.content.each_line.to_a
-    puts event_type
     Event.create(
       organization_id: oid,
       title:           event.title,
       summary:         event.summary,
-      published:       event.published,
       datetime:        content[0].sub('時間：', ''),
       location:        content[1].sub('地點：', ''),
       url:             event.url,

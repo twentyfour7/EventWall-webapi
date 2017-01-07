@@ -4,8 +4,7 @@
 class LoadEventFromNTHU
   extend Dry::Monads::Either::Mixin
   extend Dry::Container::Mixin
-# 
-# 
+
   register :retrieve_org_and_event, lambda { |nthu_type|
     if Organization.find(slug: nthu_type)
       Left(Error.new(:cannot_process, 'Organization already exists'))
@@ -19,7 +18,7 @@ class LoadEventFromNTHU
       org = Organization.create(slug: nthu_type, name: "清華公布欄", uri: URI.escape("http://bulletin.web.nthu.edu.tw/bin/home.php"))
       Right(org)
     rescue
-       Left(Error.new(:cannot_process, 'Cannot create organization'))
+      Left(Error.new(:cannot_process, 'Cannot create organization'))
     end
   }
 
@@ -32,7 +31,7 @@ class LoadEventFromNTHU
       end
       Right(org)
     rescue
-       Left(Error.new(:cannot_process, 'Cannot create event'))
+      Left(Error.new(:cannot_process, 'Cannot create event'))
     end
   }
 
@@ -53,7 +52,6 @@ class LoadEventFromNTHU
       organization_id: oid,
       title:           event.title,
       summary:         event.content,
-      published:       event.date,
       datetime:        event.date,
       # location:        content[1].sub('地點：', ''),
       url:             event.url,
@@ -63,7 +61,6 @@ class LoadEventFromNTHU
     )
   end
 end
-
 
 # EVENT_TYPE_URL = {
 #       admin: '40-1912-5074',
