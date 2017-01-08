@@ -1,2 +1,2 @@
 queues:
-  - [eventwall_queue, 1]
+  - [eventwall-parallel, 1]

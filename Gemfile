@@ -2,10 +2,10 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'sinatra'
-gem 'puma'
-gem 'json'
 gem 'econfig'
+gem 'puma'
+gem 'sinatra'
+gem 'json'
 gem 'rake'
 
 gem 'kktix_api'

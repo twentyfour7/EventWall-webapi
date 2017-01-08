@@ -10,6 +10,15 @@ class KKEventAPI < Sinatra::Base
     else
       ErrorRepresenter.new(results.value).to_status_response
     end
+
+    # send msg to SQS
+    begin
+      LoadEventWorker.perform_async(params)
+    rescue => e
+      puts 'ERROR: e'
+    end
+    puts "WORKER: #{result}"
+    [202, { channel_id: channel_id }.to_json]
   end
 
   # ??????
