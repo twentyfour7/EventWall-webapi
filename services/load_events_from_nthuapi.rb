@@ -59,6 +59,7 @@ class LoadEventsFromNTHU
 
   def self.write_nthu_event(event, oid, event_type)
     puts event.title, event_type
+    # event_detail.datetime.nil? ? '' : DateTime.strptime(event_detail.datetime.split(' ')[0].sub('/', '-'), '%Y-%m-%d').to_date
     Event.create(
       organization_id: oid,
       title:           event.title,
@@ -76,7 +77,6 @@ class LoadEventsFromNTHU
     # http://bulletin.web.nthu.edu.tw/files/40-1912-5084-1.php?Lang=zh-tw
     return BASE_URL + NTHU_ORG_TO_URL[nthu_org] + '.php?Lang=zh-tw'
   end
+
 end
-
-
 
