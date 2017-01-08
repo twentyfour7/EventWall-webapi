@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative 'spec_helper'
 
-describe 'Organization routes' do
+describe 'Event routes' do
   before do
     VCR.insert_cassette CASSETTE_FILE, record: :new_episodes
   end

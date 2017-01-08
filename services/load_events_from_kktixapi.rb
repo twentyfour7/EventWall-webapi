@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Loads data from KKTIX organization to database
-class LoadOrgFromKKTIX
+class LoadEventsFromKKTIX
   extend Dry::Monads::Either::Mixin
   extend Dry::Container::Mixin
 

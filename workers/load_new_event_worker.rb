@@ -26,7 +26,7 @@ class LoadNewEventWorker
   shoryuken_options queue: config.EVENT_QUEUE, auto_delete: true
 
   def perform(_sqs_msg)
-    result = LoadEventFromNTHU.call('')
+    result = LoadEventsFromNTHU.call('')
     puts "RESULT: #{result.value}"
 
     ErrorRepresenter.new(result.value).to_status_response
