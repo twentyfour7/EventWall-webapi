@@ -89,7 +89,7 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
-    nthuevent (0.1.1)
+    nthuevent (0.1.2)
       nokogiri (~> 1.6)
     parser (2.3.3.1)
       ast (~> 2.2)
