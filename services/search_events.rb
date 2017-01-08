@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# Loads data from Facebook group to database
+# search events from our database
+# return all events if there is no serach terms
 class SearchEvents
   extend Dry::Monads::Either::Mixin
   extend Dry::Container::Mixin

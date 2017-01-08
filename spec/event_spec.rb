@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative 'spec_helper'
 
-describe 'Organization routes' do
+describe 'Event routes' do
   before do
     VCR.insert_cassette CASSETTE_FILE, record: :new_episodes
   end
@@ -19,13 +19,13 @@ describe 'Organization routes' do
            'CONTENT_TYPE' => 'application/json'
     end
 
-    it '(HAPPY) should find events' do
-      get "api/v0.1/org/#{Organization.first.slug}/event"
-
-      last_response.status.must_equal 200
-      last_response.content_type.must_equal 'application/json'
-      JSON.parse(last_response.body).wont_be_empty
-    end
+    # it '(HAPPY) should find events' do
+    #   get "api/v0.1/org/#{Organization.first.slug}/event"
+    #
+    #   last_response.status.must_equal 200
+    #   last_response.content_type.must_equal 'application/json'
+    #   JSON.parse(last_response.body).wont_be_empty
+    # end
 
     it '(SAD) should report if the event cannot be found' do
       get "api/v0.1/org/#{SAD_KKTIX_ORG_ID}/event"
