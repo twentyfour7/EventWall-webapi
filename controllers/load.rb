@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# load data controller
 class KKEventAPI < Sinatra::Base
   # load organization and its events from kktix
   get "/#{API_VER}/load/kk/:slug" do

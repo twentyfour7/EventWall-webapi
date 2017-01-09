@@ -4,7 +4,7 @@
 class LoadEventsFromNTHU
   extend Dry::Monads::Either::Mixin
   extend Dry::Container::Mixin
-# 
+
   BASE_URL = 'http://bulletin.web.nthu.edu.tw/files/'
   NTHU_ORG_TO_URL = {
     'art' => '40-1912-5083',
@@ -79,4 +79,3 @@ class LoadEventsFromNTHU
   end
 
 end
-
