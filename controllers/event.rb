@@ -31,4 +31,16 @@ class KKEventAPI < Sinatra::Base
       ErrorRepresenter.new(result.value).to_status_response
     end
   end
+
+  # load organization and its events from nthu
+  post "/#{API_VER}/event/" do
+    event_json = JSON.parse request.body.read
+    result = SaveEvent.call(event_json)
+
+    if result.success?
+      EventRepresenter.new(result.value).to_json
+    else
+      ErrorRepresenter.new(result.value).to_status_response
+    end
+  end
 end
